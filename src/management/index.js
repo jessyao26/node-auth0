@@ -74,6 +74,7 @@ var MANAGEMENT_API_AUD_FORMAT = 'https://%s/api/v2/';
  *          If a token is provided only the domain is required, other parameters are ignored.
  *          If no token is provided domain, clientId, clientSecret and scopes are required
  * @param   {String}  options.domain                              ManagementClient server domain.
+ * @param   {String}  options.proxy                               The proxy URL.
  * @param   {String}  [options.token]                             API access token.
  * @param   {String}  [options.clientId]                          Management API Non Interactive Client Id.
  * @param   {String}  [options.clientSecret]                      Management API Non Interactive Client Secret.
@@ -100,7 +101,8 @@ var ManagementClient = function(options) {
       'User-agent': 'node.js/' + process.version.replace('v', ''),
       'Content-Type': 'application/json'
     },
-    baseUrl: baseUrl
+    baseUrl: baseUrl,
+    proxy: options.proxy
   };
 
   if (options.token === undefined) {

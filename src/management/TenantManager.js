@@ -16,6 +16,7 @@ var RetryRestClient = require('../RetryRestClient');
  *
  * @param {Object} options            The client options.
  * @param {String} options.baseUrl    The URL of the API.
+ * @param {String} options.proxy      The proxy URL.
  * @param {Object} [options.headers]  Headers to be included in all requests.
  * @param {Object} [options.retry]    Retry Policy Config
  */
@@ -35,7 +36,8 @@ var TenantManager = function(options) {
   var clientOptions = {
     errorFormatter: { message: 'message', name: 'error' },
     headers: options.headers,
-    query: { repeatParams: false }
+    query: { repeatParams: false },
+    proxy: options.proxy
   };
 
   /**
